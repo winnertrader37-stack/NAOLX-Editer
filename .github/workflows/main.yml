@@ -1,0 +1,18 @@
+name: HTML to APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build APK
+      uses: kimhuilim/html-to-apk-action@v1
+      with:
+        build-folder-path: '.'
+        app-name: 'Naol Editor'
+        output-folder-path: 'apk'
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: Naol Editor
+        path: apk/
